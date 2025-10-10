@@ -1,0 +1,22 @@
+// Dark Mode
+$color-dark-elements: hsl(209, 23%, 22%); // Blue 900
+$color-dark-bg: hsl(207, 26%, 17%); // Blue 950
+$color-dark-text: hsl(0, 100%, 100%); // White
+
+// Light Mode
+$color-light-text: hsl(200, 15%, 8%); // Grey 950
+$color-light-input: hsl(0, 0%, 50%); // Grey 400
+$color-light-bg: hsl(0, 0%, 99%); // Grey 50
+$color-light-elements: hsl(0, 100%, 100%); // White
+
+// variables.scss
+$font-homepage-items: 14px;
+$font-detail-page: 16px;
+
+// Mixins
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
