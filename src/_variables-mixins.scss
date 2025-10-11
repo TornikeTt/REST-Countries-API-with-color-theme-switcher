@@ -14,9 +14,17 @@ $font-homepage-items: 14px;
 $font-detail-page: 16px;
 
 // Mixins
-@mixin flex($direction, $justify, $align) {
+@mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
+}
+
+@mixin border($width: 1px, $color: red) {
+    border: $width solid $color;
+}
+
+@mixin font() {
+    font-family: "Nunito Sans", sans-serif;
 }
