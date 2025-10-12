@@ -1,0 +1,15 @@
+@use "../../variables-mixins" as *;
+
+.Body {
+    width: 100%;
+    height: calc(100% - 70px);
+
+    @include flex;
+}
+
+.Body_container {
+    width: 90%;
+    height: 90%;
+
+    @include border;
+}

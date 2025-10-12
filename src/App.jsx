@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./Components/Header/Header.jsx";
+import Body from "./Components/Body/Body.jsx";
 
 import "./App.scss";
 
@@ -29,6 +30,7 @@ function App() {
                 setIsDarkMode={setIsDarkMode}
                 themeStyles={themeStyles}
             />
+            <Body />
         </div>
     );
 }
