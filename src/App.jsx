@@ -30,7 +30,7 @@ function App() {
                 setIsDarkMode={setIsDarkMode}
                 themeStyles={themeStyles}
             />
-            <Body />
+            <Body themeStyles={themeStyles} />
         </div>
     );
 }

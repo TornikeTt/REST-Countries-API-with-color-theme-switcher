@@ -1,10 +1,13 @@
-import "./Body.scss";
-import { IoIosSearch } from "react-icons/io";
+import BodyHeader from "./BodyHeader";
 
-function Body() {
+import "./Body.scss";
+
+function Body({ themeStyles }) {
     return (
         <div className="Body">
-            <div className="Body_container"></div>
+            <div className="Body_container">
+                <BodyHeader themeStyles={themeStyles} />
+            </div>
         </div>
     );
 }
