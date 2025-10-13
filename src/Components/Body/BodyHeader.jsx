@@ -19,7 +19,6 @@ function BodyHeader({ themeStyles }) {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            console.log(dropdownRef.current);
             if (
                 dropdownRef.current &&
                 !dropdownRef.current.contains(event.target)
@@ -36,25 +35,25 @@ function BodyHeader({ themeStyles }) {
     }, [dropdownRef]);
 
     return (
-        <div className="Body_header">
+        <div className="Body-header">
             <div className="input-wrapper" style={themeStyles.elementColor}>
                 <IoIosSearch
-                    className="search_icon"
+                    className="search-icon"
                     style={themeStyles.textColor}
                 />
                 <input
                     type="text"
                     placeholder="Search for a country..."
-                    style={{
-                        "--placeholder-color": themeStyles.textColor?.color,
-                        ...themeStyles.textColor,
-                    }}
+                    style={themeStyles.textColor}
                 />
             </div>
             <div
-                className="dropdown_container"
+                className="dropdown-container"
                 ref={dropdownRef}
-                style={themeStyles.elementColor}
+                style={{
+                    "--placeholder-color": themeStyles.textColor.color,
+                    ...themeStyles.elementColor,
+                }}
             >
                 <button
                     className="selected"
@@ -67,7 +66,7 @@ function BodyHeader({ themeStyles }) {
                 {isDropdownMenuOpen && (
                     <div className="options" style={themeStyles.elementColor}>
                         <ul style={themeStyles.textColor}>
-                            {options.map((option, index) => (
+                            {options.map((option) => (
                                 <li
                                     key={option}
                                     onClick={() => handleSelected(option)}

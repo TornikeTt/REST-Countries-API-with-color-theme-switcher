@@ -11,4 +11,13 @@ body,
     width: 100%;
     height: 100vh;
     background-color: $color-light-bg;
+    @include font;
+}
+
+/* Form elements don't always inherit font-family, so we should set it explicitly */
+input,
+button,
+textarea,
+select {
+    font: inherit;
 }

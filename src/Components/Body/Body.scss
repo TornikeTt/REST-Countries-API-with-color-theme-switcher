@@ -4,16 +4,18 @@
     width: 100%;
     height: calc(100% - 70px);
 
+    overflow: auto;
+
     @include flex;
 }
 
-.Body_container {
+.Body-container {
     width: 90%;
     height: 90%;
 }
 
 // BodyHeader Compoenents style =========== START
-.Body_header {
+.Body-header {
     width: 100%;
     height: 45px;
 
@@ -25,11 +27,9 @@
     width: 320px;
     height: 100%;
 
-    box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 24px 0px,
-        rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-    border-radius: 5px;
+    @include shadow_radius;
 
-    .search_icon {
+    .search-icon {
         position: absolute;
         top: 50%;
         left: 8%;
@@ -52,7 +52,7 @@
     }
 }
 
-.dropdown_container {
+.dropdown-container {
     position: relative;
     width: 200px;
     height: 100%;
@@ -60,9 +60,7 @@
     border: none;
     outline: none;
 
-    box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 24px 0px,
-        rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-    border-radius: 5px;
+    @include shadow_radius;
 
     .selected {
         width: 100%;
@@ -84,9 +82,7 @@
         height: 180px;
         top: calc(100% + 10px);
 
-        box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 24px 0px,
-            rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-        border-radius: 5px;
+        @include shadow_radius;
 
         ul {
             width: inherit;
@@ -124,3 +120,59 @@
 }
 
 // BodyHeader Compoenents style =========== END
+
+// Main Compoenents style =========== START
+main {
+    width: 100%;
+    height: calc(100% - 45px);
+
+    padding-top: 30px;
+}
+
+.country-item {
+    width: 230px;
+    height: 320px;
+
+    @include shadow_radius;
+
+    cursor: pointer;
+
+    .image-container {
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+
+        box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 24px 0px,
+            rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+        img {
+            width: inherit;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .country-info {
+        padding: 20px;
+
+        h1 {
+            font-size: 18px;
+        }
+
+        div {
+            margin-top: 15px;
+
+            p {
+                margin-top: 5px;
+                font-size: 16px;
+
+                span {
+                    color: $color-light-input;
+                }
+            }
+        }
+    }
+}
+// Main Compoenents style =========== END

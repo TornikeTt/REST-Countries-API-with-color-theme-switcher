@@ -28,3 +28,9 @@ $font-detail-page: 16px;
 @mixin font() {
     font-family: "Nunito Sans", sans-serif;
 }
+
+@mixin shadow_radius($radius: 5px) {
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    border-radius: $radius;
+}
