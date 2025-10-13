@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
@@ -6,12 +6,32 @@ function BodyHeader({ themeStyles }) {
     const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
     const [dropdownOption, setDropdownOption] = useState("Filter by Region");
 
+    const dropdownRef = useRef(null);
+
     const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
-    const handelSelected = (option) => {
+    const handleSelected = (option) => {
         setDropdownOption(option);
-        setIsDropdownMenuOpen(!isDropdownMenuOpen);
+        setIsDropdownMenuOpen(false);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            console.log(dropdownRef.current);
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setIsDropdownMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [dropdownRef]);
 
     return (
         <div className="Body_header">
@@ -31,6 +51,7 @@ function BodyHeader({ themeStyles }) {
             </div>
             <div
                 className="dropdown_container"
+                ref={dropdownRef}
                 style={themeStyles.elementColor}
             >
                 <button
@@ -47,7 +68,7 @@ function BodyHeader({ themeStyles }) {
                             {options.map((option, index) => (
                                 <li
                                     key={index}
-                                    onClick={() => handelSelected(option)}
+                                    onClick={() => handleSelected(option)}
                                 >
                                     <button>{option}</button>
                                 </li>
