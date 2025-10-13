@@ -8,7 +8,9 @@ function BodyHeader({ themeStyles }) {
 
     const dropdownRef = useRef(null);
 
-    const options = ["Africa", "America", "Asia", "Europe", "Oceania"];
+    const options = ["Africa", "America", "Asia", "Europe", "Oceania"].filter(
+        (option) => option !== dropdownOption
+    );
 
     const handleSelected = (option) => {
         setDropdownOption(option);
@@ -67,7 +69,7 @@ function BodyHeader({ themeStyles }) {
                         <ul style={themeStyles.textColor}>
                             {options.map((option, index) => (
                                 <li
-                                    key={index}
+                                    key={option}
                                     onClick={() => handleSelected(option)}
                                 >
                                     <button>{option}</button>
