@@ -10,7 +10,7 @@
 }
 
 .header {
-    width: 90%;
+    width: min(1215px, 90%);
     height: inherit;
 
     @include flex(row, space-between, center);

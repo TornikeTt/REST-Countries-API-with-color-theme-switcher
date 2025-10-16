@@ -2,29 +2,29 @@
 
 .Body {
     width: 100%;
-    height: calc(100% - 70px);
+    height: 100%;
+    margin-top: 40px;
 
-    overflow: auto;
+    overflow: hidden;
 
     @include flex;
 }
 
 .Body-container {
-    width: 90%;
-    height: 90%;
+    width: min(1215px, 90%);
 }
 
 // BodyHeader Compoenents style =========== START
 .Body-header {
     width: 100%;
-    height: 45px;
+    height: 55px;
 
     @include flex(row, space-between, flex-start);
 }
 
 .input-wrapper {
     position: relative;
-    width: 320px;
+    width: min(50%, 420px);
     height: 100%;
 
     @include shadow_radius;
@@ -54,7 +54,7 @@
 
 .dropdown-container {
     position: relative;
-    width: 200px;
+    width: min(40%, 200px);
     height: 100%;
 
     border: none;
@@ -126,12 +126,22 @@ main {
     width: 100%;
     height: calc(100% - 45px);
 
-    padding-top: 30px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+
+    display: grid;
+    grid-template-rows: repeat(2, 360px);
+    grid-auto-rows: 380px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 60px;
+
+    overflow: hidden;
 }
 
 .country-item {
-    width: 230px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
 
     @include shadow_radius;
 
@@ -155,7 +165,7 @@ main {
     }
 
     .country-info {
-        padding: 20px;
+        padding: 30px;
 
         h1 {
             font-size: 18px;
