@@ -6,8 +6,46 @@
     margin-top: 40px;
 
     overflow: hidden;
+    position: relative;
 
     @include flex;
+
+    .PreviousPage,
+    .nextPage {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        background-color: transparent;
+        @include flex;
+
+        opacity: 0; // hide by default
+        pointer-events: none; // prevent interaction when hidden
+        transition: opacity 0.3s; // smooth fade-in
+
+        .rightArrow,
+        .leftArrow {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+    }
+
+    .PreviousPage {
+        left: 0;
+    }
+    .nextPage {
+        right: 0;
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    &:hover .PreviousPage,
+    &:hover .nextPage {
+        opacity: 1; // show on hover
+        pointer-events: auto; // allow interaction
+    }
 }
 
 .Body-container {
@@ -59,6 +97,7 @@
 
     border: none;
     outline: none;
+    z-index: 1000;
 
     @include shadow_radius;
 
@@ -137,6 +176,42 @@ main {
     gap: 60px;
 
     overflow: hidden;
+
+    &.left {
+        animation: slide-page-left 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    }
+
+    &.right {
+        animation: slide-page-right 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    }
+}
+
+@keyframes slide-page-left {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-page-right {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .country-item {
