@@ -2,13 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
-function BodyHeader({ themeStyles }) {
+function BodyHeader({
+    themeStyles,
+    dropdownOption,
+    setDropdownOption,
+    inputValue,
+    setInputValue,
+}) {
     const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
-    const [dropdownOption, setDropdownOption] = useState("Filter by Region");
 
     const dropdownRef = useRef(null);
 
-    const options = ["Africa", "America", "Asia", "Europe", "Oceania"].filter(
+    const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"].filter(
         (option) => option !== dropdownOption
     );
 
@@ -43,6 +48,8 @@ function BodyHeader({ themeStyles }) {
                 />
                 <input
                     type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Search for a country..."
                     style={themeStyles.textColor}
                 />
