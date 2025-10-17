@@ -1,23 +1,28 @@
-import data from "../../data.json";
-
-function Countryitem({ themeStyles }) {
+function Countryitem({
+    imageSrc,
+    countryName,
+    population,
+    region,
+    capital,
+    themeStyles,
+}) {
     return (
         <div className="country-item" style={themeStyles.elementColor}>
             <div className="image-container">
-                <img src={data[0].flags.png} alt="Country flag" />
+                <img src={imageSrc} alt="Country flag" />
             </div>
             <div className="country-info">
-                <h1 style={themeStyles.textColor}>{data[0].name}</h1>
+                <h1 style={themeStyles.textColor}>{countryName}</h1>
                 <div style={themeStyles.textColor}>
                     {/* This color only affects the "p" tag text, not the "span" text.*/}
                     <p>
-                        Population: <span>{data[0].population}</span>
+                        Population: <span>{population.toLocaleString()}</span>
                     </p>
                     <p>
-                        Region: <span>{data[0].region}</span>
+                        Region: <span>{region}</span>
                     </p>
                     <p>
-                        Capital: <span>{data[0].capital}</span>
+                        Capital: <span>{capital}</span>
                     </p>
                 </div>
             </div>
