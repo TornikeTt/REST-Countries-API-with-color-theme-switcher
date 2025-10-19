@@ -14,6 +14,7 @@ function Body({ themeStyles }) {
     const [countryName, setCountryName] = useState("");
 
     const {
+        data,
         paginatedData,
         totalPages,
         currentPage,
@@ -42,6 +43,7 @@ function Body({ themeStyles }) {
 
     return isViewChanged ? (
         <SingleCountryView
+            data={data}
             themeStyles={themeStyles}
             setIsViewChanged={setIsViewChanged}
             countryName={countryName}
@@ -75,15 +77,15 @@ function Body({ themeStyles }) {
                 >
                     {paginatedData.map((country) => (
                         <Countryitem
-                            key={country.name}
+                            key={country.name.common}
                             themeStyles={themeStyles}
                             imageSrc={country.flags.svg}
-                            countryName={country.name}
+                            countryName={country.name.common}
                             population={country.population}
                             region={country.region}
                             capital={country.capital}
                             onClick={() => {
-                                setCountryName(country.name);
+                                setCountryName(country.name.common);
                                 setIsViewChanged(true);
                             }}
                         />

@@ -1,15 +1,50 @@
 import "./SingleCountryView.scss";
-import data from "../../data.json";
-
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
-    const selectedCountry = data.find((each) => each.name === countryName);
+function SingleCountryView({
+    data,
+    themeStyles,
+    countryName,
+    setIsViewChanged,
+}) {
+    // Find selected country
+    const selectedCountry = data.find(
+        (each) => each.name.common === countryName
+    );
 
     if (!selectedCountry) {
         return <div>Country Not Found</div>;
     }
 
+    // --- Preprocess country data into simple variables ---
+    const flag = selectedCountry.flags?.svg;
+    const flagAlt = selectedCountry.flags?.alt;
+
+    const countryNameCommon = selectedCountry.name?.common || "N/A";
+    const nativeNames = selectedCountry.name?.nativeName
+        ? Object.values(selectedCountry.name.nativeName)
+              .map((n) => n.common)
+              .join(", ")
+        : "N/A";
+
+    const population = selectedCountry.population?.toLocaleString() || "N/A";
+    const region = selectedCountry.region || "N/A";
+    const subregion = selectedCountry.subregion || "N/A";
+    const capital = selectedCountry.capital?.[0] || "N/A";
+    const topLevelDomain = selectedCountry.tld?.[0] || "N/A";
+
+    const currencies = selectedCountry.currencies
+        ? Object.values(selectedCountry.currencies).map((c) => c.name)
+        : "N/A";
+
+    const languages = selectedCountry.languages
+        ? Object.values(selectedCountry.languages).join(", ")
+        : "N/A";
+
+    const borders =
+        selectedCountry.borders?.length > 0 ? selectedCountry.borders : ["N/A"];
+
+    // --- JSX ---
     return (
         <div className="singleCountryView-container">
             <div className="singleCountryView">
@@ -21,22 +56,21 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                     onClick={() => setIsViewChanged(false)}
                     className="singleCountryView-backButton"
                 >
-                    <FaArrowLeftLong />
-                    Back
+                    <FaArrowLeftLong /> Back
                 </button>
 
                 <div className="singleCountryView-details">
                     <div className="singleCountryView-flag-container">
                         <img
-                            src={selectedCountry.flags?.svg}
-                            alt={`Flag of ${selectedCountry.name}`}
+                            src={flag}
+                            alt={flagAlt}
                             className="singleCountryView-flag"
                         />
                     </div>
 
                     <div className="singleCountryView-info">
                         <h1 style={themeStyles.textColor}>
-                            {selectedCountry.name}
+                            {countryNameCommon}
                         </h1>
 
                         <div className="singleCountryView-info-meta">
@@ -45,53 +79,52 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                                     <span style={themeStyles.textColor}>
                                         Native Name:{" "}
                                     </span>
-                                    {selectedCountry.nativeName}
+                                    {nativeNames}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Population:{" "}
                                     </span>
-                                    {selectedCountry.population?.toLocaleString()}
+                                    {population}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Region:{" "}
                                     </span>
-                                    {selectedCountry.region}
+                                    {region}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
-                                        Sub Region:
-                                    </span>{" "}
-                                    {selectedCountry.subregion}
+                                        Sub Region:{" "}
+                                    </span>
+                                    {subregion}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
-                                        Capital:
-                                    </span>{" "}
-                                    {selectedCountry.capital || "N/A"}
+                                        Capital:{" "}
+                                    </span>
+                                    {capital}
                                 </li>
                             </ul>
+
                             <ul className="singleCountryView-info-list-right">
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Top Level Domain:{" "}
                                     </span>
-                                    {selectedCountry.topLevelDomain}
+                                    {topLevelDomain}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Currencies:{" "}
                                     </span>
-                                    {selectedCountry.currencies?.[0]?.name}
+                                    {currencies}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Languages:{" "}
                                     </span>
-                                    {selectedCountry.languages
-                                        ?.map((lang) => lang.name)
-                                        .join(", ")}
+                                    {languages}
                                 </li>
                             </ul>
                         </div>
@@ -100,9 +133,8 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                             <span style={themeStyles.textColor}>
                                 Border Countries:
                             </span>
-
                             <div className="singleCountryView-info-borders-list">
-                                {selectedCountry.borders?.map((border) => (
+                                {borders.map((border) => (
                                     <span
                                         key={border}
                                         style={{
