@@ -5,7 +5,10 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
     const selectedCountry = data.find((each) => each.name === countryName);
-    console.log(selectedCountry);
+
+    if (!selectedCountry) {
+        return <div>Country Not Found</div>;
+    }
 
     return (
         <div className="singleCountryView-container">
@@ -25,7 +28,7 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                 <div className="singleCountryView-details">
                     <div className="singleCountryView-flag-container">
                         <img
-                            src={selectedCountry.flags.svg}
+                            src={selectedCountry.flags?.svg}
                             alt={`Flag of ${selectedCountry.name}`}
                             className="singleCountryView-flag"
                         />
@@ -48,7 +51,7 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                                     <span style={themeStyles.textColor}>
                                         Population:{" "}
                                     </span>
-                                    {data[0].population.toLocaleString()}
+                                    {selectedCountry.population?.toLocaleString()}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
@@ -66,7 +69,7 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                                     <span style={themeStyles.textColor}>
                                         Capital:
                                     </span>{" "}
-                                    {selectedCountry.capital}
+                                    {selectedCountry.capital || "N/A"}
                                 </li>
                             </ul>
                             <ul className="singleCountryView-info-list-right">
@@ -80,14 +83,14 @@ function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
                                     <span style={themeStyles.textColor}>
                                         Currencies:{" "}
                                     </span>
-                                    {selectedCountry.currencies[0].name}
+                                    {selectedCountry.currencies?.[0]?.name}
                                 </li>
                                 <li>
                                     <span style={themeStyles.textColor}>
                                         Languages:{" "}
                                     </span>
                                     {selectedCountry.languages
-                                        .map((lang) => lang.name)
+                                        ?.map((lang) => lang.name)
                                         .join(", ")}
                                 </li>
                             </ul>
