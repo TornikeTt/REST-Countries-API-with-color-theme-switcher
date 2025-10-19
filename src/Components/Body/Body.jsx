@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { useCountries } from "./useCountries";
 
 import BodyHeader from "./BodyHeader";
 import Countryitem from "./CountryItem";
+import SingleCountryView from "../SingleCountryView/SingleCountryView";
 
 import "./Body.scss";
 
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 function Body({ themeStyles }) {
+    const [isViewChanged, setIsViewChanged] = useState(true);
+
     const {
         paginatedData,
         totalPages,
@@ -35,7 +39,9 @@ function Body({ themeStyles }) {
         }
     };
 
-    return (
+    return isViewChanged ? (
+        <SingleCountryView themeStyles={themeStyles} />
+    ) : (
         <div className="Body">
             <button className="PreviousPage">
                 <IoIosArrowDropleftCircle
