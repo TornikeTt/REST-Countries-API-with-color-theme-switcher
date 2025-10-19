@@ -10,7 +10,8 @@ import "./Body.scss";
 import { IoIosArrowDropleftCircle } from "react-icons/io";
 
 function Body({ themeStyles }) {
-    const [isViewChanged, setIsViewChanged] = useState(true);
+    const [isViewChanged, setIsViewChanged] = useState(false);
+    const [countryName, setCountryName] = useState("");
 
     const {
         paginatedData,
@@ -40,7 +41,11 @@ function Body({ themeStyles }) {
     };
 
     return isViewChanged ? (
-        <SingleCountryView themeStyles={themeStyles} />
+        <SingleCountryView
+            themeStyles={themeStyles}
+            setIsViewChanged={setIsViewChanged}
+            countryName={countryName}
+        />
     ) : (
         <div className="Body">
             <button className="PreviousPage">
@@ -77,6 +82,10 @@ function Body({ themeStyles }) {
                             population={country.population}
                             region={country.region}
                             capital={country.capital}
+                            onClick={() => {
+                                setCountryName(country.name);
+                                setIsViewChanged(true);
+                            }}
                         />
                     ))}
                 </main>

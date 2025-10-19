@@ -5,9 +5,14 @@ function Countryitem({
     region,
     capital,
     themeStyles,
+    onClick,
 }) {
     return (
-        <div className="country-item" style={themeStyles.elementColor}>
+        <div
+            className="country-item"
+            style={themeStyles.elementColor}
+            onClick={onClick}
+        >
             <div className="image-container">
                 <img src={imageSrc} alt="Country flag" />
             </div>

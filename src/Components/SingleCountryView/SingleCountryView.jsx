@@ -3,10 +3,8 @@ import data from "../../data.json";
 
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-function SingleCountryView({ themeStyles }) {
-    console.log(data);
-
-    const selectedCountry = data.find((each) => each.name === "Belgium");
+function SingleCountryView({ themeStyles, countryName, setIsViewChanged }) {
+    const selectedCountry = data.find((each) => each.name === countryName);
     console.log(selectedCountry);
 
     return (
@@ -17,6 +15,7 @@ function SingleCountryView({ themeStyles }) {
                         ...themeStyles.elementColor,
                         ...themeStyles.textColor,
                     }}
+                    onClick={() => setIsViewChanged(false)}
                     className="singleCountryView-backButton"
                 >
                     <FaArrowLeftLong />
@@ -24,11 +23,13 @@ function SingleCountryView({ themeStyles }) {
                 </button>
 
                 <div className="singleCountryView-details">
-                    <img
-                        src={selectedCountry.flags.svg}
-                        alt={`Flag of ${selectedCountry.name}`}
-                        className="singleCountryView-flag"
-                    />
+                    <div className="singleCountryView-flag-container">
+                        <img
+                            src={selectedCountry.flags.svg}
+                            alt={`Flag of ${selectedCountry.name}`}
+                            className="singleCountryView-flag"
+                        />
+                    </div>
 
                     <div className="singleCountryView-info">
                         <h1 style={themeStyles.textColor}>
