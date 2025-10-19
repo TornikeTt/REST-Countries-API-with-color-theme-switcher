@@ -3,7 +3,7 @@
 A modern, responsive web app for exploring countries worldwide. Built as a solution to the [Frontend Mentor REST Countries API with Color Theme Switcher challenge](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca), this project includes a theme switcher, search functionality, and region-based filtering, all powered by Vite for a fast development experience.
 
 <div align="center">
-  <a href="https://your-live-demo-url.com" target="_blank"><strong>🌐 View Live Demo</strong></a>
+  <a href="https://subtle-hummingbird-32d271.netlify.app/" target="_blank"><strong>🌐 View Live Demo</strong></a>
 </div>
 
 ## 📷 Screenshots
