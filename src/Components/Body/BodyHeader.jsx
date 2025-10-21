@@ -40,7 +40,7 @@ function BodyHeader({
     }, [dropdownRef]);
 
     return (
-        <div className="Body-header">
+        <search className="Body-header">
             <div className="input-wrapper" style={themeStyles.elementColor}>
                 <IoIosSearch
                     className="search-icon"
@@ -63,6 +63,7 @@ function BodyHeader({
                 }}
             >
                 <button
+                    type="button"
                     className="selected"
                     onClick={() => setIsDropdownMenuOpen(!isDropdownMenuOpen)}
                 >
@@ -78,14 +79,14 @@ function BodyHeader({
                                     key={option}
                                     onClick={() => handleSelected(option)}
                                 >
-                                    <button>{option}</button>
+                                    <button type="button">{option}</button>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 )}
             </div>
-        </div>
+        </search>
     );
 }
 

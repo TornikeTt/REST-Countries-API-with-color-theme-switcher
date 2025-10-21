@@ -55,6 +55,7 @@ function SingleCountryView({
                     }}
                     onClick={() => setIsViewChanged(false)}
                     className="singleCountryView-backButton"
+                    type="button"
                 >
                     <FaArrowLeftLong /> Back
                 </button>

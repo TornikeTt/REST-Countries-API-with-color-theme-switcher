@@ -11,7 +11,7 @@ function Header({ isDarkMode, setIsDarkMode, themeStyles }) {
         <header className="header-container" style={themeStyles.elementColor}>
             <div className="header">
                 <h1 style={themeStyles.textColor}>Where in the world?</h1>
-                <button onClick={toggleTheme}>
+                <button onClick={toggleTheme} type="button">
                     {isDarkMode ? <FaMoon color="white" /> : <FaRegMoon />}
                     <span style={themeStyles.textColor}>Dark Mode</span>
                 </button>
