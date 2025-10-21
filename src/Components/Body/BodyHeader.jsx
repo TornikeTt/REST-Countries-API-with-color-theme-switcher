@@ -40,7 +40,7 @@ function BodyHeader({
     }, [dropdownRef]);
 
     return (
-        <section className="Body-header" role="search-filter">
+        <section className="Body-header" role="search">
             <div className="input-wrapper" style={themeStyles.elementColor}>
                 <IoIosSearch
                     className="search-icon"
