@@ -2,21 +2,21 @@
 
 .singleCountryView-container {
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 4.375rem); // 70px → 4.375rem
 
     @include flex(row, center, flex-start);
 
     overflow: auto;
-    padding-bottom: 30px;
+    padding-bottom: 1.875rem; // 30px → 1.875rem
 }
 
 .singleCountryView {
-    width: min(1215px, 90%);
+    width: min(75.9375rem, 90%); // 1215px → 75.9375rem
     height: auto;
 }
 
 .singleCountryView-backButton {
-    margin-top: 40px;
+    margin-top: 2.5rem; // 40px → 2.5rem
 
     width: 110px;
     height: 30px;
@@ -30,13 +30,13 @@
 
     @include shadow_radius;
     @include flex;
-    gap: 5px;
+    gap: 0.3125rem; // 5px → 0.3125rem
 }
 
 .singleCountryView-details {
     width: 100%;
-    height: 350px;
-    margin-top: 40px;
+    height: 21.875rem; // 350px → 21.875rem
+    margin-top: 2.5rem; // 40px → 2.5rem
 
     @include flex(row, space-between, flex-start);
 }
@@ -60,27 +60,20 @@
     @include flex(column, space-evenly, flex-start);
 
     h1 {
-        font-size: 26px;
+        font-size: 1.625rem; // 26px → 1.625rem
     }
 
     .singleCountryView-info-meta {
         width: 100%;
         @include flex(row, space-between, flex-start);
 
-        .singleCountryView-info-list-left {
-            color: $color-light-input;
-            list-style-type: none;
-            li {
-                margin-top: 5px;
-            }
-        }
-
+        .singleCountryView-info-list-left,
         .singleCountryView-info-list-right {
             color: $color-light-input;
             list-style-type: none;
 
             li {
-                margin-top: 5px;
+                margin-top: 0.3125rem; // 5px → 0.3125rem
             }
         }
     }
@@ -89,17 +82,17 @@
         width: 100%;
 
         @include flex(row, flex-start, center);
-        gap: 5px;
+        gap: 0.3125rem; // 5px → 0.3125rem
 
         .singleCountryView-info-borders-list {
             @include flex(row, flex-start, center);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 0.625rem; // 10px → 0.625rem
 
             .border-country-item {
-                width: 100px;
+                width: 100px; // keep px for button/item size
                 height: 25px;
-                font-size: 14px;
+                font-size: 0.875rem; // 14px → 0.875rem
 
                 @include shadow_radius(0);
                 @include flex;
@@ -125,24 +118,21 @@
         @include flex(column, flex-start, flex-start);
 
         h1 {
-            font-size: 26px;
-            margin-top: 20px;
+            font-size: 1.625rem; // 26px → 1.625rem
+            margin-top: 1.25rem; // 20px → 1.25rem
         }
 
         .singleCountryView-info-meta {
             @include flex(column, flex-start, flex-start);
 
-            .singleCountryView-info-list-left {
-                margin-top: 20px;
-            }
-
+            .singleCountryView-info-list-left,
             .singleCountryView-info-list-right {
-                margin-top: 20px;
+                margin-top: 1.25rem; // 20px → 1.25rem
             }
         }
 
         .singleCountryView-info-borders {
-            margin-top: 30px;
+            margin-top: 1.875rem; // 30px → 1.875rem
             @include flex(column, flex-start, flex-start);
         }
     }
