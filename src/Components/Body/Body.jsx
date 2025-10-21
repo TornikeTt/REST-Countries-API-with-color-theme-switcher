@@ -50,7 +50,7 @@ function Body({ themeStyles }) {
         />
     ) : (
         <div className="Body">
-            <button className="PreviousPage">
+            <button className="PreviousPage" aria-label="Previous Page">
                 <IoIosArrowDropleftCircle
                     style={themeStyles.textColor}
                     className="rightArrow"
@@ -93,7 +93,7 @@ function Body({ themeStyles }) {
                 </main>
             </div>
 
-            <button className="nextPage">
+            <button className="nextPage" aria-label="next Page">
                 <IoIosArrowDropleftCircle
                     style={themeStyles.textColor}
                     className="leftArrow"

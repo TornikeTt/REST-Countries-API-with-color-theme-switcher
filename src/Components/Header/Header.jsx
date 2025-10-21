@@ -8,7 +8,7 @@ function Header({ isDarkMode, setIsDarkMode, themeStyles }) {
     };
 
     return (
-        <div className="header-container" style={themeStyles.elementColor}>
+        <header className="header-container" style={themeStyles.elementColor}>
             <div className="header">
                 <h1 style={themeStyles.textColor}>Where in the world?</h1>
                 <button onClick={toggleTheme}>
@@ -16,7 +16,7 @@ function Header({ isDarkMode, setIsDarkMode, themeStyles }) {
                     <span style={themeStyles.textColor}>Dark Mode</span>
                 </button>
             </div>
-        </div>
+        </header>
     );
 }
 
